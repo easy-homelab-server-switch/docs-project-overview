@@ -1,1 +1,5 @@
-Project documentation
+![microcontroler (esp32)](https://github.com/easy-homelab-server-switch/esp32)
+![cloudflare](https://github.com/easy-homelab-server-switch/cloudflare)
+![client](https://github.com/easy-homelab-server-switch/client)
+![server](https://github.com/easy-homelab-server-switch/server)
+![project overview](https://github.com/easy-homelab-server-switch/docs-project-overview)

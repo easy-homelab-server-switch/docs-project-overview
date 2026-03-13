@@ -18,7 +18,7 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/easy-homelab-server-switch/docs-project-overview/README.md"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/README.mdd"><strong>Explore the docs »</strong></a>
     <br />
   </p>
 </div>

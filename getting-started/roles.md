@@ -1,25 +1,30 @@
-1. Roles:
-   1. MQTT broker
-      1. Receives MQTT commands
-      1. Receives MQTT messages
-      1. Passes on MQTT commands
-      1. Passes on MQTT messages
-   1. Cloudflare Worker
-      1. Displays static “Server is offline” page
-      1. Routes traffic when server is down (not redirects, user stays on the same page)
-   1. Linux server
-      1. Receives MQTT commands
-      1. Sends MQTT messages (own state – heartbeat)
-      1. Executes shutdown
-   1. ESP32 controller
-      1. Receives MQTT commands
-      1. Receives MQTT messages
-      1. Sends MQTT commands
-      1. Sends MQTT messages (own state, server state after verification)
-      1. Sends WOL magic packets to start the server
-      1. Monitors server state via TCP port check
-      1. Switches Cloudflare worker
-   1. Client app
-      1. Receives MQTT messages (esp32 state, server state)
-      1. Sends MQTT commands (turn on, turn off)
-      1. Can open SSH window on Windows
+## Roles
+
+### MQTT Broker
+- Receives MQTT commands (all topics)
+- Receives MQTT messages (all topics)
+- Forwards MQTT commands (all topics)
+- Forwards MQTT messages (all topics)
+
+### Cloudflare Worker
+- Routes traffic when the server is down  
+  (no redirects — the user stays on the same URL)
+- Displays static **"Server is offline"** page
+
+### Linux Server
+- Receives MQTT commands (TOPIC\_SYSTEM)
+- Sends MQTT messages (TOPIC\_HEARTBEAT)
+- Executes shutdown
+
+### ESP32 Controller
+- Receives MQTT messages (TOPIC\_CONTROL, TOPIC\_HEARTBEAT)
+- Sends MQTT commands (TOPIC\_SYSTEM)
+- Sends MQTT messages (TOPIC\_STATE, TOPIC\_ESP32\_STATE)
+- Sends WOL magic packets to start the server
+- Monitors server state via TCP port checks
+- Switches Cloudflare Worker mode
+
+### Client Application
+- Receives MQTT messages (TOPIC\_STATE, TOPIC\_ESP32\_STATE)
+- Sends MQTT messages (TOPIC\_CONTROL)
+- Opens an SSH window on Windows (LAN)

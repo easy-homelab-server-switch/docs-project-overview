@@ -67,7 +67,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ABOUT THE PROJECT -->
-## [About the project][about-the=project-url]
+## [About the project][about-the-project-url]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -107,7 +107,6 @@
 [client-url]: https://github.com/easy-homelab-server-switch/client
 [server-url]: https://github.com/easy-homelab-server-switch/server
 [project-overview-url]: https://github.com/easy-homelab-server-switch/docs-project-overview
-[about-the=project-url]: https://ehss.github.mikolajadamczyk.tech/
 
 [microcontroller-readme-url]: https://github.com/easy-homelab-server-switch/esp32/blob/main/README.md
 [cloudflare-readme-url]: https://github.com/easy-homelab-server-switch/cloudflare/blob/main/README.md
@@ -121,6 +120,7 @@
 [server-license-url]: https://github.com/easy-homelab-server-switch/server/blob/main/LICENSE
 [project-overview-license-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/LICENSE
 
+[about-the-project-url]: https://ehss.github.mikolajadamczyk.tech/
 
 [key-features-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/getting-started/key-features.md
 [requirements-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/getting-started/requirements.md

@@ -21,9 +21,6 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About the project</a>
-    </li>
-    <li>
       <a href="#useful-shortcuts">Useful shortcuts</a>
       <ul>
         <li><a href="#project-overview-useful-shortcuts">Project overview</a></li>
@@ -32,6 +29,9 @@
         <li><a href="#microcontroller-useful-shortcuts">Microcontroller (ESP32)</a></li>
         <li><a href="#client-useful-shortcuts">Client</a></li>
       </ul>
+    </li>
+    <li>
+      <a href="#about-the-project">About the project</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -54,10 +54,6 @@
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
-## [About the project][about-the=project-url]
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- USEFUL SHORTCUTES -->
 ## Useful shortcuts
 |Module|Repository|README|License|
@@ -70,6 +66,9 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- ABOUT THE PROJECT -->
+## [About the project][about-the=project-url]
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 # Getting started

@@ -19,9 +19,6 @@
 #### PC
 - OS: Windows 10 21H2
 - Python: 3.13.7
-- Libraries:
-  - kivy >= 2.3.0
-  - paho-mqtt
 
 #### Phone
 - OS: Android 16

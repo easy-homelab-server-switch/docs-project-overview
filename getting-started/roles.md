@@ -12,19 +12,19 @@
 - Displays static **"Server is offline"** page
 
 ### Linux Server
-- Receives MQTT commands (TOPIC\_SYSTEM)
-- Sends MQTT messages (TOPIC\_HEARTBEAT)
+- Receives MQTT commands `(TOPIC_SYSTEM)`
+- Sends MQTT messages `(TOPIC_HEARTBEAT)`
 - Executes shutdown
 
 ### ESP32 Controller
-- Receives MQTT messages (TOPIC\_CONTROL, TOPIC\_HEARTBEAT)
-- Sends MQTT commands (TOPIC\_SYSTEM)
-- Sends MQTT messages (TOPIC\_STATE, TOPIC\_ESP32\_STATE)
+- Receives MQTT messages `(TOPIC_CONTROL`, `TOPIC_HEARTBEAT)`
+- Sends MQTT commands `(TOPIC_SYSTEM)`
+- Sends MQTT messages `(TOPIC_STATE`, `TOPIC_ESP32_STATE)`
 - Sends WOL magic packets to start the server
 - Monitors server state via TCP port checks
 - Switches Cloudflare Worker mode
 
 ### Client Application
-- Receives MQTT messages (TOPIC\_STATE, TOPIC\_ESP32\_STATE)
-- Sends MQTT messages (TOPIC\_CONTROL)
+- Receives MQTT messages `(TOPIC_STATE`, `TOPIC_ESP32_STATE)`
+- Sends MQTT messages `(TOPIC_CONTROL)`
 - Opens an SSH window on Windows (LAN)

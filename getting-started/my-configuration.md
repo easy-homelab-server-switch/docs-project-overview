@@ -1,7 +1,7 @@
 ## My configuration
 
 ### MQTT
-- Cloud broker: HiveMQ Cloud (Free “Serverless” option)
+- Cloud broker: HiveMQ Cloud `(Free “Serverless” option)`
 - Separate users for server, ESP32, and client
 
 ### Cloudflare

@@ -8,7 +8,7 @@
   </a>
 
 <h3 align="center">Easy Homelab Server Switch</h3>
-
+<h4 align="center">» Project overview «</h4>
   <p align="center">
     <a href="https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />

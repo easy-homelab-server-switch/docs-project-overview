@@ -1,7 +1,7 @@
 ## My configuration
 
 ### MQTT
-- Cloud broker: HiveMQ Cloud `(Free “Serverless” option)`
+- Cloud broker: [HiveMQ Cloud](https://www.hivemq.com/) `(Free “Serverless” option)`
 - Separate users for server, ESP32, and client
 
 ### Cloudflare
@@ -12,13 +12,13 @@
 - Kernel: GNU/Linux 6.8.0-101-generic x86_64
 
 ### ESP32 Controller
-- Model: ESP32-C3-MINI-1
+- Model: [ESP32-C3-MINI-1](https://www.amazon.pl/dp/B0BVQN6SGS)
 
 ### Client
 
 #### PC
 - OS: Windows 10 21H2
-- Python: 3.13.7
+- [Python: 3.13.7](https://www.python.org/downloads/release/python-3137/)
 
 #### Phone
 - OS: Android 16

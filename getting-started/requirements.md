@@ -6,4 +6,4 @@
 - ESP32 device
 - Client device
   - PC with Windows
-  - Phone with Android
+  - (OPTIONAL) Phone with Android

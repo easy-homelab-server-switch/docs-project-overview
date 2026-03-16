@@ -29,4 +29,4 @@ Depending on which components you deploy, you may need the following tools:
 ||git|
 ||Arduino IDE|
 |VM|ADB|
-|VM|npm|
+||npm|

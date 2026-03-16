@@ -1,9 +1,29 @@
 ## Requirements
+Before starting, make sure you have access to the following components and tools.
 
+
+### Accounts
 - MQTT broker
 - Cloudflare account
+- GitHub account
+
+
+### Hardware
 - Linux server
-- ESP32 device
+- Linux VM
+- ESP32 microcontroller
 - Client device
   - PC with Windows
-  - (OPTIONAL) Phone with Android
+  - **(optional)** Android phone
+
+
+### Software
+Depending on which components you deploy, you may need the following tools:
+
+|Device|Tool|
+| :-- | :-- |
+|Server|Docker|
+||Docker Compose|
+|PC|Python 3.10+|
+||Arduino IDE|
+|PC/VM|ADB|

@@ -25,5 +25,8 @@ Depending on which components you deploy, you may need the following tools:
 |Server|Docker|
 ||Docker Compose|
 |PC|Python 3.10+|
+||pip|
+||git|
 ||Arduino IDE|
 |PC/VM|ADB|
+|VM|npm|

@@ -28,5 +28,5 @@ Depending on which components you deploy, you may need the following tools:
 ||pip|
 ||git|
 ||Arduino IDE|
-|PC/VM|ADB|
+|VM|ADB|
 |VM|npm|

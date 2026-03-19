@@ -34,6 +34,9 @@
       <a href="#about-the-project">About the project</a>
     </li>
     <li>
+      <a href="#guide">Guide</a>
+    </li>
+    <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#key-features">Key features</a></li>
@@ -68,6 +71,11 @@
 
 <!-- ABOUT THE PROJECT -->
 ## [About the project][about-the-project-url]
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GUIDE -->
+# Guide
+If you want to get the system up and running as quickly as possible, consider [following the guide](https://ehss.github.mikolajadamczyk.tech/#guide).
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->

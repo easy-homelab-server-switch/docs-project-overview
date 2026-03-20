@@ -75,7 +75,7 @@
 
 <!-- GUIDE -->
 # Guide
-If you want to get the system up and running as quickly as possible, consider [following the guide](https://ehss.github.mikolajadamczyk.tech/#guide).
+If you want to get the system up and running as quickly as possible, consider [following the guide][guide-url].
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -128,7 +128,8 @@ If you want to get the system up and running as quickly as possible, consider [f
 [server-license-url]: https://github.com/easy-homelab-server-switch/server/blob/main/LICENSE
 [project-overview-license-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/LICENSE
 
-[about-the-project-url]: https://ehss.github.mikolajadamczyk.tech/
+[about-the-project-url]: https://3m-code.github.io/easy-homelab-server-switch-page/
+[guide-url]: https://3m-code.github.io/easy-homelab-server-switch-page/#guide
 
 [key-features-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/getting-started/key-features.md
 [requirements-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/getting-started/requirements.md

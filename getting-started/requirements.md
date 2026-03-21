@@ -9,7 +9,7 @@ Before starting, make sure you have access to the following components and tools
 
 
 ### Hardware
-- Linux server
+- Linux server with static IP
 - Linux VM
 - ESP32 microcontroller
 - Client device

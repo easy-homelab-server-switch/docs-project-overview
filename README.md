@@ -46,7 +46,7 @@
       </ul>
     </li>
     <li>
-      <a href="#mqtt">MQTT</a>
+      <a href="#mqtt-section">MQTT</a>
       <ul>
         <li><a href="#sequence-diagrams">Sequence diagrams</a></li>
         <li><a href="#state-machine-diagrams">State machine diagrams</a></li>
@@ -70,7 +70,8 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ABOUT THE PROJECT -->
-## [About the project][about-the-project-url]
+# About the project
+You can get information about the project on the [official website][about-the-project-url].
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GUIDE -->
@@ -81,24 +82,171 @@ If you want to get the system up and running as quickly as possible, consider [f
 <!-- GETTING STARTED -->
 # Getting started
 
-### [Key features][key-features-url]
-### [Requirements][requirements-url]
-### [Roles][roles-url]
-### [My configuration][my-configuration-url]
+## Key features
+- Remote shutdown of the server
+- Remote wake-up of the server
+- Real-time status monitoring (via TCP port checks and heartbeats)
+- TLS support
+- Cross-platform client (Windows, Android)
+- Works behind CGNAT (no public IP required)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+## Requirements
+Before starting, make sure you have access to the following components and tools:
+
+#### Accounts
+- MQTT broker
+- Cloudflare account
+- GitHub account
+
+#### Hardware
+- Linux server with static IP
+- Linux VM
+- ESP32 microcontroller
+- Client device
+  - PC with Windows
+  - **(optional)** Android phone
+
+#### Software
+Depending on which components you deploy, you may need the following tools:
+
+|Device|Tool|
+| :-- | :-- |
+|Server|Docker|
+||Docker Compose|
+|PC|Python 3.10+|
+||pip|
+||git|
+||Arduino IDE|
+|VM|ADB|
+||npm|
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Roles
+#### MQTT Broker
+- Receives MQTT commands (all topics)
+- Receives MQTT messages (all topics)
+- Routes MQTT commands (all topics)
+- Routes MQTT messages (all topics)
+
+#### Cloudflare Worker
+- Routes traffic when the server is down  
+  (no redirects — the user stays on the same URL)
+- Displays a static **"Server is offline"** page
+
+#### Linux Server
+- Receives MQTT commands `(TOPIC_SYSTEM)`
+- Sends MQTT messages `(TOPIC_HEARTBEAT)`
+- Executes server shutdown
+
+#### ESP32 Controller
+- Receives MQTT messages `(TOPIC_CONTROL`, `TOPIC_HEARTBEAT)`
+- Sends MQTT commands `(TOPIC_SYSTEM)`
+- Sends MQTT messages `(TOPIC_STATE`, `TOPIC_ESP32_STATE)`
+- Sends WOL magic packets to start the server
+- Monitors server state via TCP port checks
+- Switches the Cloudflare Worker mode
+
+#### Client Application
+- Receives MQTT messages `(TOPIC_STATE`, `TOPIC_ESP32_STATE)`
+- Sends MQTT messages `(TOPIC_CONTROL)`
+- Opens an SSH window on Windows (LAN)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## My configuration
+#### MQTT
+- Cloud broker: [HiveMQ Cloud](https://www.hivemq.com/) `(Free “Serverless” option)`
+- Separate users for server, ESP32, and client
+
+#### Cloudflare
+- Worker name: `offline-mode`
+
+#### Linux Server
+- OS: Ubuntu Server 24.04.3 LTS  
+- Kernel: GNU/Linux 6.8.0-101-generic x86_64
+
+#### ESP32 Controller
+- Model: [ESP32-C3-MINI-1](https://www.amazon.pl/dp/B0BVQN6SGS)
+
+#### Client
+
+##### PC
+- OS: Windows 10 21H2
+- [Python: 3.13.7](https://www.python.org/downloads/release/python-3137/)
+
+##### Phone
+- OS: Android 16
+
+#### VM (for building Android client and deploying Cloudflare Worker)
+- OS: Ubuntu Desktop 24.04.4 LTS
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- MQTT -->
+<a id="mqtt-section"></a>
 # MQTT
 
-### [Sequence diagrams][sequence-diagrams-url]
-### [State machine diagrams][state-machine-diagrams-url]
-### [Communication architecture][communication-architecture-url]
+## Sequence diagrams
+#### Turning on the server
+![Server turning on](/img/mqtt-sequence-diagrams/server-turn-on.png)
+
+#### Turning off the server
+![Server turning off](/img/mqtt-sequence-diagrams/server-turn-off.png)
+
+#### Turning on the ESP32
+![ESP32 turning on](/img/mqtt-sequence-diagrams/esp32-turn-on.png)
+
+#### Turning on the ESP32
+![ESP32 turning off](/img/mqtt-sequence-diagrams/esp32-turn-off.png)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## State machine diagrams
+#### TOPIC_STATE
+![Topic state](/img/state-machine-diagrams/topic-state.png)
+
+#### TOPIC_ESP32_STATE
+![Topic esp32 state](/img/state-machine-diagrams/topic-esp32-state.png)
+
+#### TOPIC_CONTROL
+![Topic control](/img/state-machine-diagrams/topic-control.png)
+
+#### TOPIC_SYSTEM
+![Topic system](/img/state-machine-diagrams/topic-system.png)
+
+#### TOPIC_HEARTBEAT
+![Topic heartbeat](/img/state-machine-diagrams/topic-heartbeat.png)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Communication architecture
+|Topic|Publisher|Subscriber(s)|Usage|Supported messages (Payloads)|
+| :-: | :-: | :-: | :-: | :-: |
+|TOPIC\_CONTROL|Client|Microcontroller|Sending on/off commands|<p>ON</p><p>OFF</p>|
+|TOPIC\_SYSTEM|Microcontroller|Server|Sending system commands|SHUTDOWN|
+|TOPIC\_HEARTBEAT|Server|Microcontroller|Sending server state|<p>ALIVE</p><p>DEAD</p>|
+|TOPIC\_STATE|Microcontroller|Client|Announcing server state|<p>STARTING</p><p>ONLINE</p><p>SHUTTING\_DOWN</p><p>OFFLINE</p>|
+|TOPIC\_ESP32\_STATE|Microcontroller|Client|Announcing microcontroller state|<p>ONLINE</p><p>OFFLINE</p>|
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <a id="messages-dictionary"></a>
-
-### [Messages (payload) dictionary][messages-dictionary-url]
-
+## Messages (payload) dictionary
+|Topic|Message (Payload)|Meaning|Retained?|
+| :-: | :-: | :-: | :-: |
+|TOPIC\_CONTROL|ON|Server start request|No|
+||OFF|Server shutdown request|No|
+|TOPIC\_SYSTEM|SHUTDOWN|Server shutdown command|No|
+|TOPIC\_HEARTBEAT|ALIVE|Server is active|Yes|
+||DEAD|Server is not active|Yes|
+|TOPIC\_STATE|STARTING|Server is starting|Yes|
+||ONLINE|Server is responding|Yes|
+||SHUTTING\_DOWN|Server is shutting down|Yes|
+||OFFLINE|Server is not responding|Yes|
+|TOPIC\_ESP32\_STATE|ONLINE|ESP32 is active|Yes|
+||OFFLINE|ESP32 is not active|Yes|
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -130,13 +278,3 @@ If you want to get the system up and running as quickly as possible, consider [f
 
 [about-the-project-url]: https://3m-code.github.io/easy-homelab-server-switch-page/
 [guide-url]: https://3m-code.github.io/easy-homelab-server-switch-page/#guide
-
-[key-features-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/getting-started/key-features.md
-[requirements-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/getting-started/requirements.md
-[roles-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/getting-started/roles.md
-[my-configuration-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/getting-started/my-configuration.md
-
-[sequence-diagrams-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/mqtt/sequence-diagrams.md
-[state-machine-diagrams-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/mqtt/state-machine-diagrams.md
-[communication-architecture-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/mqtt/communication-architecture.md
-[messages-dictionary-url]: https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/mqtt/messages-dictionary.md

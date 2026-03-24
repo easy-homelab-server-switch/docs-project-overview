@@ -74,10 +74,55 @@
 You can get information about the project on the [official website][about-the-project-url].
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
 <!-- GUIDE -->
 # Guide
 If you want to get the system up and running as quickly as possible, consider [following the guide][guide-url].
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- DEPLOYMENT ROADMAP -->
+# Deployment Roadmap (TL;DR)
+This roadmap provides the essential steps to get EHSS running.
+
+## MQTT Broker
+- Use <a href="#my-configuration">MQTT broker</a> of your choice or self-host **Mosquitto**.
+- Create three sets of credentials (with Pub/Sub permissions) for: `Server`, `ESP32`, and `Client`.
+- Note your Broker URL and Port.
+
+## Cloudflare Worker
+#### Option A (With GitHub Pages):
+- Create a static "Offline" page repo on GitHub.
+- Create a new DNS record (CNAME) in Cloudflare for `username.github.io`
+- Create new DNS records (A) on **domain registrar page** following the [GitHub docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain).
+- Adjust the configuration file (`wrangler.toml`) by modifying the [following fields](https://github.com/easy-homelab-server-switch/cloudflare/blob/main/README.md#configuration).
+- Deploy the worker via Wrangler.
+#### Option B (Without GitHub Pages):
+- Adjust the configuration file (`wrangler.toml`) by modifying the [following fields](https://github.com/easy-homelab-server-switch/cloudflare/blob/main/README.md#configuration).
+- Adjust the `build_offline_page()` function in the `index.js` file to customize the page.
+- Deploy the worker via Wrangler.
+
+## Linux Server
+- Adjust the configuration file (`config.py`) by modifying the [following fields](https://github.com/easy-homelab-server-switch/server/blob/main/README.md#configuration).
+- Deploy via Docker: `sudo docker-compose up -d --build --force-recreate`.
+
+## ESP32
+- Use Arduino IDE with ESP32 board support.
+- Install the [required libraries](https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/README.md#requirements-arduino-ide).
+- Adjust the configuration file (`config.cpp`) by modifying the [following fields](https://github.com/easy-homelab-server-switch/esp32/blob/main/README.md#configuration).
+- Upload the firmware to the microcontroler.
+
+## Client App
+#### Windows
+- Make sure you have <a href="#software">required software</a> installed on the PC.
+- Adjust the configuration file (`config.py`) by modifying the [following fields](https://github.com/easy-homelab-server-switch/client/blob/main/README.md#configuration).
+#### Android (Optional)
+- Make sure you have <a href="#software">required software</a> installed on the VM.
+- Adjust the configuration file (`config.py`) by modifying the [following fields](https://github.com/easy-homelab-server-switch/client/blob/main/README.md#configuration).
+- Initialize Buildozer.
+- Adjust the Buildozer configuration file (`buildozer.spec`) by modifying the [following fields](https://github.com/easy-homelab-server-switch/client/blob/main/README.md#buildozer-configuration).
+- Build the Android APK `buildozer -v android debug`.
+
 
 <!-- GETTING STARTED -->
 # Getting started
@@ -116,11 +161,22 @@ Depending on which components you deploy, you may need the following tools:
 |Server|Docker|
 ||Docker Compose|
 |PC|Python 3.10+|
-||pip|
 ||git|
+||pip|
 ||Arduino IDE|
 |VM|ADB|
 ||npm|
+||openjdk 17|
+||buildozer|
+
+#### Arduino IDE
+<a id="requirements-arduino-ide"></a>
+|Library|Author|
+| :- | :- |
+|ArduinoJson|Benoit Blanchon|
+|LibSSH-ESP32|Ewan Parker|
+|PubSubClient|Nick O'Leary|
+|WakeOnLan|a7md0|
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 

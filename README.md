@@ -82,6 +82,8 @@ You can get information about the project on the [official website][about-the-pr
 <!-- GUIDE -->
 # Guide
 If you want to get the system up and running as quickly as possible, consider [following the guide][guide-url].
+Alternatively, you can follow the free [deployment roadmap](#deployment-roadmap).
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -113,7 +115,7 @@ This roadmap provides the essential steps to get EHSS running.
 
 ## ESP32
 - Use Arduino IDE with ESP32 board support.
-- Install the [required libraries](https://github.com/easy-homelab-server-switch/docs-project-overview/blob/main/README.md#requirements-arduino-ide).
+- Install the [required libraries](#requirements-arduino-ide).
 - Adjust the configuration file (`config.cpp`) by modifying the [following fields](https://github.com/easy-homelab-server-switch/esp32/blob/main/README.md#configuration).
 - Upload the firmware to the microcontroler.
 

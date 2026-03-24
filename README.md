@@ -72,6 +72,7 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
 <!-- ABOUT THE PROJECT -->
 # About the project
 You can get information about the project on the [official website][about-the-project-url].
@@ -185,22 +186,26 @@ Depending on which components you deploy, you may need the following tools:
 
 
 ## Roles
+<a id="roles-mqtt-broker"></a>
 #### MQTT Broker
 - Receives MQTT commands (all topics)
 - Receives MQTT messages (all topics)
 - Routes MQTT commands (all topics)
 - Routes MQTT messages (all topics)
 
+<a id="roles-cloudflare-worker"></a>
 #### Cloudflare Worker
 - Routes traffic when the server is down  
   (no redirects — the user stays on the same URL)
 - Displays a static **"Server is offline"** page
 
+<a id="roles-linux-server"></a>
 #### Linux Server
 - Receives MQTT commands `(TOPIC_SYSTEM)`
 - Sends MQTT messages `(TOPIC_HEARTBEAT)`
 - Executes server shutdown
 
+<a id="roles-esp32-controller"></a>
 #### ESP32 Controller
 - Receives MQTT messages `(TOPIC_CONTROL`, `TOPIC_HEARTBEAT)`
 - Sends MQTT commands `(TOPIC_SYSTEM)`
@@ -209,6 +214,7 @@ Depending on which components you deploy, you may need the following tools:
 - Monitors server state via TCP port checks
 - Switches the Cloudflare Worker mode
 
+<a id="roles-client-application"></a>
 #### Client Application
 - Receives MQTT messages `(TOPIC_STATE`, `TOPIC_ESP32_STATE)`
 - Sends MQTT messages `(TOPIC_CONTROL)`

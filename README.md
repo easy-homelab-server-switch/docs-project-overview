@@ -82,6 +82,7 @@ You can get information about the project on the [official website][about-the-pr
 <!-- GUIDE -->
 # Guide
 If you want to get the system up and running as quickly as possible, consider [following the guide][guide-url].
+
 Alternatively, you can follow the free [deployment roadmap](#deployment-roadmap).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

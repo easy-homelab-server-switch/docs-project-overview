@@ -89,8 +89,8 @@ Alternatively, you can follow the free [deployment roadmap](#deployment-roadmap)
 
 
 <!-- DEPLOYMENT ROADMAP -->
-<a id="deployment-roadmap"></a>
 # Deployment roadmap (TL;DR)
+<a id="deployment-roadmap"></a>
 This roadmap provides the essential steps to get EHSS running.
 
 ## MQTT Broker
@@ -189,27 +189,27 @@ Depending on which components you deploy, you may need the following tools:
 
 
 ## Roles
-<a id="roles-mqtt-broker"></a>
 #### MQTT Broker
+<a id="roles-mqtt-broker"></a>
 - Receives MQTT commands (all topics)
 - Receives MQTT messages (all topics)
 - Routes MQTT commands (all topics)
 - Routes MQTT messages (all topics)
 
-<a id="roles-cloudflare-worker"></a>
 #### Cloudflare Worker
+<a id="roles-cloudflare-worker"></a>
 - Routes traffic when the server is down  
   (no redirects — the user stays on the same URL)
 - Displays a static **"Server is offline"** page
 
-<a id="roles-linux-server"></a>
 #### Linux Server
+<a id="roles-linux-server"></a>
 - Receives MQTT commands `(TOPIC_SYSTEM)`
 - Sends MQTT messages `(TOPIC_HEARTBEAT)`
 - Executes server shutdown
 
-<a id="roles-esp32-controller"></a>
 #### ESP32 Controller
+<a id="roles-esp32-controller"></a>
 - Receives MQTT messages `(TOPIC_CONTROL`, `TOPIC_HEARTBEAT)`
 - Sends MQTT commands `(TOPIC_SYSTEM)`
 - Sends MQTT messages `(TOPIC_STATE`, `TOPIC_ESP32_STATE)`
@@ -217,8 +217,8 @@ Depending on which components you deploy, you may need the following tools:
 - Monitors server state via TCP port checks
 - Switches the Cloudflare Worker mode
 
-<a id="roles-client-application"></a>
 #### Client Application
+<a id="roles-client-application"></a>
 - Receives MQTT messages `(TOPIC_STATE`, `TOPIC_ESP32_STATE)`
 - Sends MQTT messages `(TOPIC_CONTROL)`
 - Opens an SSH window on Windows (LAN)

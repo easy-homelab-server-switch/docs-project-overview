@@ -37,6 +37,9 @@
       <a href="#guide">Guide</a>
     </li>
     <li>
+      <a href="#deployment-roadmap">Deployment roadmap</a>
+    </li>
+    <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#key-features">Key features</a></li>
@@ -82,7 +85,8 @@ If you want to get the system up and running as quickly as possible, consider [f
 
 
 <!-- DEPLOYMENT ROADMAP -->
-# Deployment Roadmap (TL;DR)
+<a id="deployment-roadmap"></a>
+# Deployment roadmap (TL;DR)
 This roadmap provides the essential steps to get EHSS running.
 
 ## MQTT Broker
